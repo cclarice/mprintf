@@ -99,8 +99,8 @@ int main(void)
 	printf("LDBL_MIN_10_EXP = %d\n", LDBL_MIN_10_EXP);
 	printf("LDBL_MAX_EXP    = %d\n", LDBL_MAX_EXP);
 	printf("LDBL_MAX_10_EXP = %d\n", LDBL_MAX_10_EXP);
-	printf("LDBL_MAX        = %e\n", LDBL_MAX);
-	printf("LDBL_EPSILON    = %e\n", LDBL_EPSILON);
-	printf("LDBL_MIN        = %e\n", LDBL_MIN);
+	printf("LDBL_MAX        = %Le\n", LDBL_MAX);
+	printf("LDBL_EPSILON    = %Le\n", LDBL_EPSILON);
+	printf("LDBL_MIN        = %Le\n", LDBL_MIN);
 	printf("\n");
 }

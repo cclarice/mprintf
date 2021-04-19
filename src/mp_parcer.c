@@ -12,13 +12,19 @@
 /*                                                                            */
 /*   mp_parcer.c                              cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/04/19 21:15:21  /  2021/04/19 21:27:31 @cclarice   */
+/*   Created/Updated: 2021/04/20 02:34:42  /  2021/04/20 02:36:02 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mprintf.h"
 
-void	mp_parcer()
+void	mp_parser(const char *format, int *p, t_ptf *s)
 {
 
 }
+
+void	mp_writer(const char *format, int *p, t_ptf *s)
+{
+
+}
+

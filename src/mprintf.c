@@ -12,7 +12,7 @@
 /*                                                                            */
 /*   mprintf.c                                cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/04/17 20:22:13  /  2021/04/19 21:31:24 @cclarice   */
+/*   Created/Updated: 2021/04/20 02:19:40  /  2021/04/20 02:37:15 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,33 +25,44 @@
 // Conversions: %c %s %p %d %i %u %x %X !%n! !%f! !%g! !%e!
 // Flags: - + 0 . *
 
-void	mp_fill_struct(t_printf *s, int *p)
+void	mp_fill_struct(t_ptf *s, int *p)
 {
 	s->ret = 0;
-	s->lenght = MINT;
-	s->minus = MINT;
 	s->plus = MINT;
+	s->minus = MINT;
+	s->lenght = MINT;
+	s->width = MINT;
+	s->zero = MINT;
+}
+
+void	mp_sreset(t_ptf *s)
+{
+	s->plus = MINT;
+	s->minus = MINT;
+	s->lenght = MINT;
 	s->width = MINT;
 	s->zero = MINT;
 }
 
 int	mprintf(const char *format, ...)
 {
-	t_printf	s;
-	int			p;
+	t_ptf	s;
+	int		p;
 
 	va_start(s.vargs, format);
-	mptf_fill_struct(&s, &p);
+	mp_fill_struct(&s, &p);
 	while (format[p])
 	{
 		if (format[p] == '%')
 		{
-			mp_parser(format, &p, s);
-			mp_writer(format, &p, s);
+			mp_parser(format, &p, &s);
+			mp_writer(format, &p, &s);
+			mp_sreset(&s);
 		}
 		else
 			mp_putchar(&s, format[p]);
 		p++;
 	}
+	va_end(s.vargs);
 	return (s.ret);
 }

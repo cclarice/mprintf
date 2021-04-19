@@ -32,7 +32,7 @@
 // Conversions: %c %s %p %d %i %u %x %X !%n! !%f! !%g! !%e!
 // Flags: - + 0 . *
 
-typedef struct s_printf
+typedef struct s_ptf
 {
 	char	**format;
 	va_list	vargs;
@@ -42,8 +42,19 @@ typedef struct s_printf
 	int		plus;
 	int		width;
 	int		zero;
-}			t_printf;
+}			t_ptf;
 
 int	mprintf(const char *format, ...);
+
+//  mp_putstr.c
+
+void	mp_putchar(t_ptf *s, char c);
+void	mp_putstr(t_ptf *s, char *str);
+void	mp_putint(t_ptf *s, int i);
+
+//	mp_parcer.c
+
+void	mp_parser(const char *format, int *p, t_ptf *s);
+void	mp_writer(const char *format, int *p, t_ptf *s);
 
 #endif

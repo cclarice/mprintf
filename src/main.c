@@ -12,7 +12,7 @@
 /*                                                                            */
 /*   main.c                                   cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/04/17 23:22:01  /  2021/04/19 21:25:30 @cclarice   */
+/*   Created/Updated: 2021/04/20 01:48:55  /  2021/04/20 02:14:30 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,27 @@
 
 int main()
 {
-	const char *org = "";
-	const char *mpf = "";
-	
-	while ()
-	if (argc == 2)
-	{
-		printf("[Test]\n");
-		printf(" [%d]\n", (or = printf((const char *)argv[1])));
-		printf(" [%d]\n", (m = mprintf((const char *)argv[1])));
-		if (or != m)
-			printf("\033[31m[ERROR]\n");
-		else
-			printf("\033[33m[GOOOD]\n");
-	}
+	const char*	frm = "%c\n";
+	const char	chr = 'c';
+	const char*	str = "String";
+	const int	dgt = 126;
+	const uint	unt = 162;
+	const uint	hex = 0x14142;
+	const uint*	ptr = (uint*)0x12414;
+
+	printf(" [%d]\n",  printf(frm, chr));
+	printf(" [%d]\n", mprintf(frm, chr));
+
+//	while ()
+//	if (argc == 2)
+//	{
+//		printf("[Test]\n");
+//		printf(" [%d]\n", (or = printf((const char *)argv[1])));
+//		printf(" [%d]\n", (m = mprintf((const char *)argv[1])));
+//		if (or != m)
+//			printf("\033[31m[ERROR]\n");
+//		else
+//			printf("\033[33m[GOOOD]\n");
+//	}
 	return (0);
 }

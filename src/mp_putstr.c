@@ -10,21 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 /*                                                                            */
-/*   add.c                                    cclarice@student.21-school.ru   */
+/*   mp_putstr.c                              cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/04/18 00:58:15  /  2021/04/18 02:48:45 @cclarice   */
+/*   Created/Updated: 2021/04/20 02:23:58  /  2021/04/20 02:36:58 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mprintf.h"
 
-void	mp_putchar(t_printf *s, char c)
+void	mp_putchar(t_ptf *s, char c)
 {
 	write(1, &c, 1);
 	s->ret++;
 }
 
-void	mp_putstr(t_printf *s, char *str)
+void	mp_putstr(t_ptf *s, char *str)
 {
 	int i;
 
@@ -33,11 +33,11 @@ void	mp_putstr(t_printf *s, char *str)
 		mp_putchar(s, str[i++]);
 }
 
-void	mp_putint(t_printf *s, int i)
+void	mp_putint(t_ptf *s, int i)
 {
 	if (i == 0)
-		mp_putchar(s, '0')
+		mp_putchar(s, '0');
 	if ((i / 10))
 		mp_putint(s, i / 10);
-	mp_putchar(s);
+	mp_putchar(s, i % 10 - '0');
 }

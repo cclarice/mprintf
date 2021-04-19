@@ -1,0 +1,1 @@
+echo nnnn && clang mp_putstr.c mp_parcer.c mprintf.c main.c
