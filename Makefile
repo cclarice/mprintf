@@ -12,13 +12,23 @@
 #                                                                              #
 #    Makefile                                 cclarice@student.21-school.ru    #
 #                                                                              #
-#    Created/Updated: 2021/04/20 01:23:00  /  2021/04/20 01:23:04 @cclarice    #
+#    Created/Updated: 2021/04/17 20:08:39  /  2021/04/23 03:12:14 @cclarice    #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = mprintfs.a
+NAME	=	mprintf.a
 
-HEAD = src/mprintf.h
+CC = clang
 
-SRCS = mp_parcer.c                                                             \
-       
+HEAD	=	src/mprintf.h
+
+SRCS	=	mp_parcer.c \
+			mp_putstr.c \
+			
+SRC_DIR = $(addprefix src/, $(SRCS))
+
+OBJ		= $(patsubst src/%.c, obj/%.o, $(SRC_DIR))
+
+all: $(OBJ_DIR)
+
+$(NAME):	&(SRCS)
