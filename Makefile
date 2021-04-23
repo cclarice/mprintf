@@ -12,13 +12,11 @@
 #                                                                              #
 #    Makefile                                 cclarice@student.21-school.ru    #
 #                                                                              #
-#    Created/Updated: 2021/04/17 20:08:39  /  2021/04/23 03:12:14 @cclarice    #
+#    Created/Updated: 2021/04/23 03:30:20  /  2021/04/23 03:30:33 @cclarice    #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	mprintf.a
-
-CC = clang
 
 HEAD	=	src/mprintf.h
 
@@ -29,6 +27,22 @@ SRC_DIR = $(addprefix src/, $(SRCS))
 
 OBJ		= $(patsubst src/%.c, obj/%.o, $(SRC_DIR))
 
-all: $(OBJ_DIR)
+CC = clang
 
-$(NAME):	&(SRCS)
+FLAG = -Wall -Wextra -Werror
+
+obj/%.o:	src/%.c $(HEAD)
+	$(CC) $(FLAG) -c $<
+
+all: $(OBJ_DIR) %(NAME)
+
+$(NAME):	&(SRCS) $(HEAD)
+	ar rc $(NAME) $(OBJ)
+
+clean:
+	rm -rf $(OBJ)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
