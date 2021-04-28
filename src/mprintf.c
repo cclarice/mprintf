@@ -12,7 +12,7 @@
 /*                                                                            */
 /*   mprintf.c                                cclarice@student.21-school.ru   */
 /*                                                                            */
-/*   Created/Updated: 2021/04/23 03:20:57  /  2021/04/23 03:21:01 @cclarice   */
+/*   Created/Updated: 2021/04/23 19:16:29  /  2021/04/23 19:16:51 @cclarice   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 void	mp_fill_struct(t_ptf *s, int *p)
 {
 	s->ret = 0;
+	p[0] = 0;
 	s->plus = MINT;
 	s->minus = MINT;
 	s->lenght = MINT;

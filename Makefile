@@ -12,7 +12,7 @@
 #                                                                              #
 #    Makefile                                 cclarice@student.21-school.ru    #
 #                                                                              #
-#    Created/Updated: 2021/04/23 17:24:04  /  2021/04/23 17:24:13 @cclarice    #
+#    Created/Updated: 2021/04/24 18:41:24  /  2021/04/24 18:41:32 @cclarice    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,35 +30,48 @@ SRCS	=	mprintf.c \
 			mp_parcer.c \
 			mp_putstr.c
 
-SRCD	=	$(addprefix src/, $(SRCS))
+# Sources Folder
+SRCF	=	src/
 
+# Sources with prefix "src/" mprintf.c -> src/mprintf.c
+SRCD	=	$(addprefix $(SRCF), $(SRCS))
+
+# Objects with prefix "obj/" mprintf.c -> obj/mprintf.o
 OBJS	=	$(patsubst src/%.c, obj/%.o, $(SRCD))
 
+# Objects folder
 OBJD	=	obj
 
+# Compiler command
 CC		=	clang
 
+# Creating directory comand
 MKDIR	=	mkdir
 
-FLAG	=	-Wall -Wextra -Werror
+# Compiler flag
+FLAG	=	-Wall -Wextra -Werror -O3
 
-all:		$(OBJD)
+# Count of comands
+
+
+all:		$(OBJD) $(NAME)
 
 $(OBJD):
-		@echo '\033[32m [=        ]$\033[0m Start'
+		@echo -e 'Make:'
+		@echo -ne '\033[32m [\033[s     ]\033[0m'
 		@$(MKDIR) $@
-		@echo '\033[32m [==       ]$\033[0m Obj dir created'
-		@echo '$(OBJS)'
+		@echo -ne '\033[u=\033[s\033[3;20H\033[0m $(OBJD) dir created       '
 
 obj/%.o:	src/%.c
-	$(CC) -g $(FLAG) -c $(OBJ)
+		@$(CC) $(FLAG) -c $< -o $@
+		@echo -ne '\033[u=\033[s\033[3;20H\033[0m $< compiled               '
 
-$(NAME):	$(SRC_DIR) $(HEAD)
-		echo 1
-		ar rc $(NAME) $(OBJ)
+$(NAME):	$(OBJS) $(HEAD)
+		@ar rc $(OBJ) $(NAME)
+		@echo -e '\033[u=\033[s\033[3;20H\033[0m $(NAME) compiled           '
 
 main:		all
-		%(CC) $(NAME) $(MAIN) -o main.out
+		$(CC) $(NAME) $(MAIN) -o main.out
 
 clean:
 		rm -rf $(OBJD)
